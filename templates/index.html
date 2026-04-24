@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>기술 배지 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8">
+    <h1 class="text-2xl font-bold mb-6">기술 배지 대시보드</h1>
+
+    <!-- 고정 메뉴 배지 -->
+    <div class="flex gap-2 flex-wrap mb-8">
+        <span class="bg-gray-400 text-white px-3 py-1 rounded-full">[backend] python</span>
+        <span class="bg-purple-400 text-white px-3 py-1 rounded-full">[DB] sql</span>
+        <span class="bg-orange-400 text-white px-3 py-1 rounded-full">html</span>
+        <span class="bg-green-400 text-white px-3 py-1 rounded-full">bash</span>
+    </div>
+
+    <form action="/add" method="POST" class="flex gap-2 mb-8">
+        <input type="text" name="skill" placeholder="기술명 입력 (예: python, sql, html)"
+               class="border px-3 py-2 rounded w-72">
+        <button type="submit" class="bg-black text-white px-4 py-2 rounded">추가</button>
+    </form>
+
+    <div class="flex gap-2 flex-wrap">
+        {% for skill in skills %}
+            {% if skill == "python" %}
+                <span class="bg-gray-400 text-white px-3 py-1 rounded-full">[backend] {{ skill }}</span>
+            {% elif skill == "sql" %}
+                <span class="bg-purple-400 text-white px-3 py-1 rounded-full">[DB] {{ skill }}</span>
+            {% elif skill == "html" %}
+                <span class="bg-orange-400 text-white px-3 py-1 rounded-full">{{ skill }}</span>
+            {% elif skill == "bash" %}
+                <span class="bg-green-400 text-white px-3 py-1 rounded-full">{{ skill }}</span>
+            {% else %}
+                <span class="bg-black text-white px-3 py-1 rounded-full">[ETC] {{ skill }}</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
