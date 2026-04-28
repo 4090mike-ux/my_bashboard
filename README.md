@@ -133,19 +133,3 @@ if __name__ == "__main__":
 | `pip install -r requirements.txt` | 목록 보고 패키지 한번에 설치 |
 | `python app.py` | Flask 서버 실행 |
 | `Ctrl + C` | 서버 종료 |
-
----
-
-## 구술 테스트 핵심 답변
-
-**Q. 빈 값 입력을 막는 코드는 어디에 있나요?**
-> app.py의 `if skill:` — 빈 문자열은 False 이므로 `skills.append` 가 실행되지 않는다
-
-**Q. 리스트는 어디에 저장되나요?**
-> app.py 전역 변수 `skills = []` — 서버가 실행되는 동안 메모리에 유지된다
-
-**Q. POST 라우팅이란?**
-> `@app.route("/add", methods=["POST"])` — form에서 버튼을 눌러야만 실행되는 함수, 주소창에 직접 입력해서는 접근 불가
-
-**Q. redirect("/") 는 왜 사용하나요?**
-> 데이터 저장 후 다시 "/" 로 이동해 화면을 새로고침한다. 새로고침 시 POST가 중복 실행되는 것을 막기 위해 redirect 사용
